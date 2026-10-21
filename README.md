@@ -1,8 +1,16 @@
 # kindle-writes
 
-A tiny language model that generates text directly on a jailbroken Kindle's e-ink screen.
+A tiny language model built to generate text on a jailbroken Kindle's e-ink screen. It is trained on 30 famous Shakespeare lines, and it reproduces them. The on-device run is still waiting on hardware; see Current state.
 
-Byte-level GPT (~890K params, 128-dim, 4 layers) trained from scratch on Shakespeare, with a pure-C inference engine that runs on the Kindle's ARM processor. No dependencies beyond libc and libm.
+A byte-level GPT (~890K params, 128-dim, 4 layers) trained from scratch on a small Shakespeare quote file, with a pure-C inference engine built for the Kindle's ARM processor. No dependencies beyond libc and libm. The training file is 30 famous quotes repeated, so the output below is recall, by design.
+
+One real sample at temperature 0.8 (captured for this README; every line appears in the training file):
+
+```
+to be, that is the question.
+Words without thoughts never to heaven go.
+How sharper than a serpent tooth it is to have
+```
 
 ## How it works
 
@@ -14,7 +22,7 @@ kindle/write.sh     Runs the model and renders output to e-ink via eips
 kindle/deploy.sh    Copies binary + weights to Kindle over SSH
 ```
 
-The model trains on a Mac, exports weights as a flat float32 binary, and the C engine loads them on the Kindle. The write script feeds generated text character-by-character to `eips`, the Kindle's built-in e-ink text renderer.
+The model trains on a Mac, exports weights as a flat float32 binary, and the C engine loads them on the Kindle. The write script feeds generated text character by character to `eips`, the Kindle's built-in e-ink text renderer.
 
 ## Build
 
@@ -49,16 +57,20 @@ Produces `checkpoints/final.bin` (~3.4 MB) and `checkpoints/final.pt`.
 
 ## Deploy to Kindle
 
-Requires a jailbroken Kindle with KOReader and SSH access (see [kindledock](https://github.com/abhay/kindledock) for setup).
+Requires a jailbroken Kindle with SSH access.
 
 ```sh
 ./kindle/deploy.sh [kindle-ip] [checkpoints/final.bin]
 ```
 
-Then SSH in and run:
-```sh
-/mnt/us/kindle-writes/write.sh
-```
+Then SSH in and run `/mnt/us/kindle-writes/write.sh`.
+
+## What's here
+
+- 890K-param byte-level GPT (no tokenizer, vocab is raw bytes 0-255)
+- Pure C inference with no dependencies
+- Static ARM binary (480 KB) built for Kindle hardware
+- Weight export verified by roundtrip tests (Python export matches C load)
 
 ## Test
 
@@ -66,25 +78,9 @@ Then SSH in and run:
 make test
 ```
 
-## What's here
-
-- 890K-param byte-level GPT (no tokenizer, vocab is raw bytes 0-255)
-- Pure C inference with no dependencies
-- Static ARM binary (480 KB) runs on Kindle hardware
-- Weight export verified by roundtrip tests (Python export matches C load)
-- C and Python outputs match under greedy decoding
-
 ## Current state
 
-The model trains, exports, and runs in C on x86 and ARM. Sample output (greedy, Shakespeare-trained):
-
-```
-To be or not to be, that is the question.
-Hell is empty and all the devils are here.
-No legacy is so rich as hon
-```
-
-**Hardware blocker:** The Kindle is registered in Tailscale (`kindle`, 100.83.27.105) but offline (last seen 2026-10-20, ~20h). SSH on port 2222 times out. The device needs to be powered on and connected to a network with Tailscale running. Once reachable, deploy with `./kindle/deploy.sh` and run `write.sh` on-device. Everything else is ready.
+The model trains, exports, and runs in C on this Mac (arm64). The on-device demo is waiting on hardware: the Kindle is offline, so the on-device run has not happened yet. Once it is powered on and reachable, deploy with `./kindle/deploy.sh` and run `write.sh` on-device.
 
 ## License
 
