@@ -76,7 +76,15 @@ make test
 
 ## Current state
 
-The model trains, exports, and runs in C on x86 and ARM. The Kindle was offline at build time (Tailscale unreachable), so on-device testing is pending the Kindle being powered on and connected.
+The model trains, exports, and runs in C on x86 and ARM. Sample output (greedy, Shakespeare-trained):
+
+```
+To be or not to be, that is the question.
+Hell is empty and all the devils are here.
+No legacy is so rich as hon
+```
+
+**Hardware blocker:** The Kindle is registered in Tailscale (`kindle`, 100.83.27.105) but offline (last seen 2026-10-20, ~20h). SSH on port 2222 times out. The device needs to be powered on and connected to a network with Tailscale running. Once reachable, deploy with `./kindle/deploy.sh` and run `write.sh` on-device. Everything else is ready.
 
 ## License
 
