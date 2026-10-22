@@ -63,6 +63,8 @@ Requires a jailbroken Kindle with SSH access.
 ./kindle/deploy.sh [kindle-ip] [checkpoints/final.bin]
 ```
 
+Set the Kindle address with `KINDLE_HOST` in your environment or in a gitignored `.env` file at the repo root (for example `KINDLE_HOST=<kindle-ip>`). The first argument overrides it.
+
 Then SSH in and run `/mnt/us/kindle-writes/write.sh`.
 
 ## What's here
