@@ -15,5 +15,6 @@ checkpoints/
 *.pth
 !tests/*.bin
 .DS_Store
+.env
 .venv/
 .pytest_cache/

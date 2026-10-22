@@ -3,7 +3,10 @@
 #
 # Usage: ./deploy.sh [kindle-host] [weights.bin]
 
-KINDLE="${1:-100.83.27.105}"
+if [ -z "$KINDLE_HOST" ] && [ -f "$(dirname "$0")/../.env" ]; then
+    . "$(dirname "$0")/../.env"
+fi
+KINDLE="${1:-${KINDLE_HOST:?Set KINDLE_HOST in env or .env}}"
 WEIGHTS="${2:-checkpoints/final.bin}"
 SSH_KEY="${HOME}/.ssh/kindle_koreader"
 PORT=2222
