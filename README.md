@@ -51,6 +51,12 @@ All 30 samples are in [`docs/klib-2026-10-28/samples/`](docs/klib-2026-10-28/sam
 [`kindle/kw`](kindle/kw) lives in KOReader's terminal scripts. Type `kw` and a prompt in KOReader's terminal and the Kindle writes a page from the final weights with a fresh seed. While the sampler runs it prints its `top` row every 5 seconds, so you can watch it use the CPU. A page takes about 30 seconds on 2 cores.
 
 <p align="center">
+  <img src="docs/klib-2026-10-28/framebuffer/session.gif" width="60%" alt="A recording of the Kindle's screen: the title card, kw writing a page while its top rows tick by, the loss curve drawing, then the terminal proof">
+</p>
+
+That's a recording of the Kindle's screen, captured from its framebuffer about 6 times a second. The wait while it samples is sped up 6x and the curve drawing 3x, as labeled in the corner. The page in it came from seed 94672. Here's a single run as a still:
+
+<p align="center">
   <img src="docs/klib-2026-10-28/framebuffer/09-kw.png" width="60%" alt="kw running on the Kindle: weights hash, prompt, seed, the sampler at full CPU, then the page it wrote in 31 seconds">
 </p>
 
@@ -103,6 +109,7 @@ Everything below runs on the Kindle (its own Lua 5.1, busybox, a static C binary
 | a new page every morning at 7, saved into the Kindle library as a document | [`kindle/morning.sh`](kindle/morning.sh) |
 | the cards in this README, drawn with fbink in the Kindle's Bookerly font | [`kindle/show.sh`](kindle/show.sh) |
 | framebuffer capture to PNG | [`kindle/grab.sh`](kindle/grab.sh) |
+| screen recording: framebuffer frames while `show.sh` runs, then a video on the Mac | [`kindle/rec.sh`](kindle/rec.sh), [`kindle/mkvideo.py`](kindle/mkvideo.py) |
 
 ## Run it yourself
 
