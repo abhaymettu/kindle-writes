@@ -108,10 +108,13 @@ proof)
     exit 0 ;;
 kw)
     shift
-    out=$({ echo "> kw $*"; echo " "; sh /mnt/us/koreader/scripts/kw "$@"; } 2>&1)
     start
     i=3
-    echo "$out" | tr -d "%" | fold -s -w 64 | while IFS= read -r l; do eips 2 $i "${l:- }" >/dev/null; i=$((i + 1)); done
+    # Draw each line as kw prints it, so the screen shows the run as it happens (eips drops text after a %).
+    { echo "> kw $*"; echo " "; sh /mnt/us/koreader/scripts/kw "$@"; } 2>&1 | while IFS= read -r l; do
+        echo "${l//%/}" | fold -s -w 64 | while IFS= read -r w; do eips 2 $i "${w:- }" >/dev/null; i=$((i + 1)); done
+        i=$((i + $(echo "${l//%/}" | fold -s -w 64 | wc -l)))
+    done
     eips '' >/dev/null 2>&1
     exit 0 ;;
 *) echo "usage: show.sh title|write PROMPT SEED [PAGE]|before PROMPT SEED|curve|proof"; exit 2 ;;
