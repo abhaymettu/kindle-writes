@@ -18,3 +18,4 @@ checkpoints/
 .env
 .venv/
 .pytest_cache/
+!docs/klib-2026-10-28/weights/*.bin

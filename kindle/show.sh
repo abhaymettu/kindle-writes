@@ -38,37 +38,31 @@ foot() { t "size=7,top=1340,left=80,right=80,style=ITALIC" "$1"; }
 case "$1" in
 title)
     st=$(awk -F'\t' '$3=="step"{s=$4} END{print s}' $LOG)
-    hrs=$(awk -F'\t' '$3=="step"{t=$2} END{printf "%.1f", t/3600}' $LOG)
+    hrs=$(awk -F'\t' '$3=="step"{t=$2} END{printf "%.0f", t/3600}' $LOG)
+    nb=$(ls /mnt/us/documents/Library/*.epub | wc -l | tr -d ' ')
     start
-    t "size=8,top=130,left=90,right=90,style=BOLD" "KINDLE WRITES"
-    t "size=20,top=230,left=90,right=90,style=BOLD" "This Kindle trained its own language model."
-    t "size=11,top=560,left=90,right=90" "A small language model, trained from nothing on this Kindle's own processor, reading only the books in its library."
-    t "size=10,top=860,left=90,right=90,format" "**1.07 million** parameters
-**$st** training steps
-**$hrs hours** of training on 2 phone-class cores
-**0** pretrained weights, **0** cloud"
+    t "size=20,top=230,left=90,right=90,style=BOLD" "my kindle trained its own language model"
+    t "size=11,top=560,left=90,right=90" "trained from scratch on the $nb books on it, on its own cpu"
+    t "size=10,top=860,left=90,right=90,format" "1.07m params, $st steps, $hrs hours on 2 arm cores"
     show ;;
 write)
     W=${4:-$FINAL}
     txt=$(gen "$W" "$2" "$3" 600 | page "$2" 560)
     start
     t "size=11,top=110,bottom=170,left=90,right=90,format" "$txt"
-    foot "Written by this Kindle just now. Bold is the prompt. Step $(stepof "$W"), seed $3."
     show ;;
 before)
     a=$(gen $FIRST "$2" "$3" 260 | page "$2" 230)
     b=$(gen "$FINAL" "$2" "$3" 380 | page "$2" 340)
     start
-    t "size=8,top=90,left=90,right=90,style=BOLD" "STEP $(stepof $FIRST): BEFORE ANY TRAINING"
+    t "size=8,top=90,left=90,right=90,style=BOLD" "step $(stepof $FIRST), before training"
     t "size=10,top=160,bottom=760,left=90,right=90,format" "$a"
-    t "size=8,top=700,left=90,right=90,style=BOLD" "STEP $(stepof "$FINAL"): AFTER A DAY OF TRAINING"
+    t "size=8,top=700,left=90,right=90,style=BOLD" "step $(stepof "$FINAL"), a day later"
     t "size=10,top=770,bottom=170,left=90,right=90,format" "$b"
-    foot "Same prompt, same seed, same Kindle. Only the weights changed."
     show ;;
 curve)
     start
-    t "size=8,top=110,left=90,right=90,style=BOLD" "LEARNING TO PREDICT THE NEXT LETTER"
-    t "size=9,top=180,left=90,right=90" "Error on pages it never trained on, in nats per character. Lower is better."
+    t "size=8,top=110,left=90,right=90,style=BOLD" "loss on pages it never trained on"
     # plot box: x 140..980, y 420..1180 ; y range 1.3..3.0
     awk -F'\t' '$3=="val_char"{print $4, $7}' $LOG | awk -v last="$(awk -F'\t' '$3=="step"{s=$4} END{print s}' $LOG)" '
       { x = 140 + int(840 * $1 / last); y = 420 + int(760 * (3.0 - $2) / 1.7); if (y > 1180) y = 1180
@@ -79,12 +73,11 @@ curve)
     $FB -q -b -B BLACK -k top=1180,left=140,width=846,height=3
     $FB -q -b -B BLACK -k top=420,left=137,width=3,height=763
     a=$(awk -F'\t' '$3=="val_char"{print $7; exit}' $LOG); z=$(awk -F'\t' '$3=="val_char"{v=$7} END{print v}' $LOG)
-    t "size=8,top=420,left=175,right=90,style=BOLD" "$a at the start"
-    t "size=8,top=1040,left=700,right=90,style=BOLD" "$z at the end"
+    t "size=8,top=420,left=175,right=90,style=BOLD" "$a"
+    t "size=8,top=1040,left=700,right=90,style=BOLD" "$z"
     t "size=7,top=1200,left=135,right=90" "0"
     t "size=7,top=1200,left=470,right=90" "training steps"
     t "size=7,top=1200,left=905,right=60" "6,600"
-    foot "Every point measured on this Kindle during the run."
     show ;;
 proof)
     start

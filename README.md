@@ -62,14 +62,33 @@ Everything below runs on the Kindle (Lua 5.1, busybox, a static C binary, fbink)
 
 Native writes on this Kindle go to `/mnt/base-us`, not the `/mnt/us` FUSE view. Build the trainer with `trainer/build.sh` (`native` for a Mac, `arm` for the Kindle via Docker). Set `KINDLE_HOST` in your environment or in a gitignored `.env`.
 
-The books and the trained weights aren't in this repo. The weights are 4.3 MB, and their SHA256 is in [`docs/klib-2026-10-28/samples/WEIGHTS`](docs/klib-2026-10-28/samples/WEIGHTS).
+## Run it yourself
+
+The weights are in [`docs/klib-2026-10-28/weights/`](docs/klib-2026-10-28/weights/): `51.bin` (4.3 MB, sha256 `fb79c6f3`) and the tokenizer, `vocab.bin` (`616086f1`). `train-mask.bin` lists which token ids occur in the training text, which the sampler needs; it has no book text in it. The books aren't in this repo.
+
+To regenerate my 30 samples from those weights and compare them byte for byte with the ones the Kindle wrote (needs a C compiler, takes a few seconds):
+
+```sh
+sh kindle/reproduce.sh check
+```
+
+To run the whole thing on your own jailbroken Kindle, from the epubs on it (SSH as root on port 2222, like `kindle/deploy.sh`):
+
+```sh
+KINDLE_HOST=192.168.1.20 sh kindle/reproduce.sh kindle
+```
+
+It copies `prep.lua`, `bpe.lua`, `nwrun.sh` and the exact ARM binary this run trained with (`docs/klib-2026-10-28/bin/nightwriter-arm-bpe`, sha256 `52522b45`, the hash in [`launches.tsv`](docs/klib-2026-10-28/launches.tsv)) to the Kindle, builds the text and the tokenizer there, and starts the same 6,600-step run. It takes about a day. With my 12 books the Kindle gets text `e90f0e54`, tokens `873218f5` and vocab `616086f1`; with yours the hashes will be different. I ran it on my Kindle again on Oct 28: same three hashes, and the same held-out loss at steps 25 and 50 (2.7932, 2.5956) as the real run.
+
+On the Kindle itself, [`kindle/kw`](kindle/kw) goes in KOReader's terminal scripts. Type `kw` and a prompt in KOReader's terminal and it writes a page from the final weights with a new seed, printing the sampler's `top` row every 5 seconds while it runs (about 30 seconds on 2 cores).
 
 ![The Kindle's terminal: hardware, the end of the training log, the weights hash](docs/klib-2026-10-28/framebuffer/08-proof.png)
 
 ## Evidence
 
 [`docs/klib-2026-10-28/`](docs/klib-2026-10-28/) has:
-- the full training log;
+- the full training log, and the launch log with the binary, token and vocab hashes for both starts;
+- the final weights, the tokenizer and the ARM binaries that trained and sampled;
 - all 30 samples with SHA256SUMS, plus the sampler's own copy check;
 - the blind pack, scores and key;
 - framebuffer captures of every card.
@@ -78,7 +97,7 @@ The books and the trained weights aren't in this repo. The weights are 4.3 MB, a
 
 The first version trained a byte-level GPT on a Mac from 30 repeated Shakespeare lines and only ran inference on the Kindle (`train/`, `inference/`, `kindle/write.sh`). It reproduced its training file.
 
-From Oct 23 to 27 I trained on the Kindle using only Pride and Prejudice, at 0.5M to 1.1M parameters, over several nights. The best held-out loss was 1.14 nats per character, and 0 of 360 blind-scored samples had a readable paragraph. That run read the one novel 39 times. This one read twelve books about five times each, and that's what got it to sentences.
+From Oct 23 to 27 I trained on the Kindle using only Pride and Prejudice, at 0.5M to 1.1M parameters, over several nights. The best held-out loss was 1.14 nats per character, and 0 of 360 blind-scored samples had a readable paragraph. That run read the one novel 39 times. This one read twelve books about five times each.
 
 ## License
 

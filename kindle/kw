@@ -1,0 +1,36 @@
+#!/bin/sh
+# kw PROMPT...   Type this in KOReader's terminal. The Kindle writes a page from your prompt with the weights it
+# trained, and shows the sampler process while it runs. A new random seed every time; it prints the seed so the
+# same page can be regenerated anywhere from the same weights.
+cd /mnt/base-us/kindle-writes || exit 2
+BIN=q1025-bpe-bin/nightwriter-arm-bpe-lex
+TOK=klib-data/tok1024
+W=$(ls klib/pages/*.bin | tail -1)
+[ $# -eq 0 ] && { echo "type: kw your prompt"; echo "example: kw The phone rang twice."; exit 1; }
+prompt="$*"
+seed=$(( $(date +%s) % 100000 ))
+mkdir -p klib-kw; out=klib-kw/kw.$$.txt
+
+echo "weights  $W  sha256 $(sha256sum "$W" | cut -c1-16)"
+echo "trained  $(awk -F'\t' '$3=="step"{n++} END{print n" steps logged"}' klib/train.log), last row $(tail -1 klib/train.log | cut -f1,3,4)"
+echo "prompt   $prompt"
+echo "seed     $seed"
+echo
+
+$BIN sample --init "$W" --tokens $TOK/tokens.bin --vocab $TOK/vocab.bin --prompt "$prompt" \
+    --sample-seed $seed --temp 0.65 --top-k 8 --page-chars 600 --threads 2 --lexicon 0 > $out 2>/dev/null &
+pid=$!
+t=0
+while kill -0 $pid 2>/dev/null; do
+    if [ $((t % 5)) -eq 0 ]; then
+        top -b -n 1 -p $pid | awk -v t=$t '$1 ~ /^[0-9]+$/ {printf "%3ds  pid %s  %s  cpu %s%%  mem %s%%  time %s\n", t, $1, $12, $9, $10, $11}'
+    fi
+    sleep 1; t=$((t + 1))
+done
+wait $pid
+echo
+cat $out
+echo
+echo
+echo "($t s on this kindle, seed $seed)"
+rm -f $out
