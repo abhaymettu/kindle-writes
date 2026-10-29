@@ -37,7 +37,7 @@ foot() { t "size=7,top=1340,left=80,right=80,style=ITALIC" "$1"; }
 
 case "$1" in
 title)
-    st=$(awk -F'\t' '$3=="step"{s=$4} END{print s}' $LOG)
+    st=$(awk -F'\t' '$3=="step"{s=$4} END{print s}' $LOG | sed 's/\([0-9]\)\([0-9]\{3\}\)$/\1,\2/')
     hrs=$(awk -F'\t' '$3=="step"{t=$2} END{printf "%.0f", t/3600}' $LOG)
     nb=$(ls /mnt/us/documents/Library/*.epub | wc -l | tr -d ' ')
     start
