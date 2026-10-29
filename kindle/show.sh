@@ -6,6 +6,7 @@
 #   before PROMPT SEED         the same prompt and seed from the first weights (step 24) and the last
 #   curve                      held-out loss over training, drawn from train.log
 #   proof                      raw device facts in the terminal font
+#   kw PROMPT                  run kw for real and draw its transcript in the terminal font
 cd /mnt/base-us/kindle-writes || exit 2
 FB=/mnt/us/libkh/bin/fbink
 F=/usr/java/lib/fonts
@@ -103,6 +104,14 @@ proof)
       echo " "
       echo "> uptime"; uptime | cut -d, -f1,2
     } | cut -c1-64 | while IFS= read -r l; do eips 2 $i "$l" >/dev/null; i=$((i + 1)); done
+    eips '' >/dev/null 2>&1
+    exit 0 ;;
+kw)
+    shift
+    out=$({ echo "> kw $*"; echo " "; sh /mnt/us/koreader/scripts/kw "$@"; } 2>&1)
+    start
+    i=3
+    echo "$out" | tr -d "%" | fold -s -w 64 | while IFS= read -r l; do eips 2 $i "${l:- }" >/dev/null; i=$((i + 1)); done
     eips '' >/dev/null 2>&1
     exit 0 ;;
 *) echo "usage: show.sh title|write PROMPT SEED [PAGE]|before PROMPT SEED|curve|proof"; exit 2 ;;
