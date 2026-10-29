@@ -1,0 +1,252 @@
+{
+ "b000": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/n3-2028.txt",
+  "sha256": "80dcff2ad7bb9d12ececc43864bea9873d0424ba90824ec143cb632fd07dee34"
+ },
+ "b001": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p1-71.txt",
+  "sha256": "314ce3997cfeb71bcbe1ef4ed2b04a15ebbe00d09b34388931dee85e49289c2c"
+ },
+ "b002": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p4-1342.txt",
+  "sha256": "bc56a8213a932a68c62db552351632cc7e0754e935c2e49e54fad89f61d30454"
+ },
+ "b003": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/n2-7.txt",
+  "sha256": "e5a8f793f9108ece05ffa0ad3ffee483766f4b6b599379ff6a19950218836673"
+ },
+ "b004": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/n4-7.txt",
+  "sha256": "7f57ce9e79faca1fb315f4cb720deb360d8ec40d4616819f377376d3b9242b19"
+ },
+ "b005": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p3-1342.txt",
+  "sha256": "e45d56cde1a891a103da45a17cea594886518f1c468aeb0f65b2dc742eda3ceb"
+ },
+ "b006": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p5-2026.txt",
+  "sha256": "22a816bef3b806bf5c8a225306e16ad6df739e4f98ab05fc28ff07898eb4dd1d"
+ },
+ "b007": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p4-2026.txt",
+  "sha256": "abffb5dabc5fc3baf36b3737c0006578c181110890854bb76987b1bf3bfb6c61"
+ },
+ "b008": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p3-1342.txt",
+  "sha256": "13f550a91c7c532e3b6bc257bd77ea42bb169903ddf4c103144348eb27d30e43"
+ },
+ "b009": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p5-71.txt",
+  "sha256": "b08dd30d038444a1bc41967b9ac1a4996329449d968a5b454b0be3091c6f0a30"
+ },
+ "b010": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p2-99.txt",
+  "sha256": "529609ff28498b61710230dfe3bc434d77c2469956ecb58a477c3e029165ba49"
+ },
+ "b011": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/n3-7.txt",
+  "sha256": "e03468d35a3f2922b0f63bf5c74b27b8435287a133092c8a5ac365e4c25a7fd4"
+ },
+ "b012": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/n5-2028.txt",
+  "sha256": "f7eb64bbaa7ef34ec32deeff68a3d6d6cec909446bc5cec59b7b1453a7356925"
+ },
+ "b013": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p1-1342.txt",
+  "sha256": "0141946ade57a96d45390827de0fa82d33ea811497fc6cd0bc04eb6b967fa693"
+ },
+ "b014": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p3-71.txt",
+  "sha256": "d14048a5402a002a0b25c523e7228bd2f0079b95b3152c629822d78b88274042"
+ },
+ "b015": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p2-2026.txt",
+  "sha256": "de46679ff1ae58dbe5d65f2a7a909baf4e7504f9a1c8a4c0766722b4afaddb84"
+ },
+ "b016": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p3-71.txt",
+  "sha256": "2cfb81f0bcb42ca157edccd191fda03e958c7662aa65ef97cc203c829adb2493"
+ },
+ "b017": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p4-99.txt",
+  "sha256": "196f84e3d5e3dfbd1d80cba6bde67d3b152b0086a2e0f21ecd267787ab75d11e"
+ },
+ "b018": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/n1-7.txt",
+  "sha256": "cffbc51261ee22381169513b5fc904465fa46822219d59b925fd498c8e6a40ca"
+ },
+ "b019": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p4-2026.txt",
+  "sha256": "ee8c137948101e5edcdf6209cb2d42335cb1bbb0113dc3093da63e6a93a57369"
+ },
+ "b020": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p3-2026.txt",
+  "sha256": "0efe04d776ea00278f53881f7e06da53078ac40aa55d4ba2944f433e7ba7054a"
+ },
+ "b021": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p1-71.txt",
+  "sha256": "13145bd7558a03e743b0bd7a902497e4fe23bd774fe15b0c4c628f8cdee3c3e1"
+ },
+ "b022": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p5-71.txt",
+  "sha256": "966a1be0d7ff44e4c74f68581da3d0acd5bc2c8a057acab11b1f54a0ca2a7716"
+ },
+ "b023": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p4-71.txt",
+  "sha256": "364e0bb8c5bc579cd659a55bd4241bf46d62cf93d1a54db2c702f09e44ac704f"
+ },
+ "b024": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p1-1342.txt",
+  "sha256": "b8f0d3b388d3eac32e07e987f5312008aa6acd87671010ea64cea1f7f7d8ac8a"
+ },
+ "b025": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p5-1342.txt",
+  "sha256": "555a22c3854ce8df0dd898c6ff99232fa1b1b6a972404cb07a45873f2853375b"
+ },
+ "b026": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p3-99.txt",
+  "sha256": "d8ab03bbec0a6a77dd02e9d0c4c2d00f56a3f10b1a185758ad04e32b5e15e356"
+ },
+ "b027": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p1-2026.txt",
+  "sha256": "0b6e3043eeb4d4c55af597d964c7f5557ed7adcb3353ecbe3fcec90ba1711383"
+ },
+ "b028": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p1-99.txt",
+  "sha256": "8153609f0203959ed739121fedbf6b14192b73f27cfea64e6c825ae0810610fc"
+ },
+ "b029": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p5-99.txt",
+  "sha256": "c148e4a21e9f91834fa815cfe984546a2e0d3ef934d71e26b357760e612b7ac3"
+ },
+ "b030": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/n4-2028.txt",
+  "sha256": "3e3ec157c8e362c7ecbdbb47f1c1e97dc1addc22ea2107daf0d8de4e37cd9f47"
+ },
+ "b031": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p2-71.txt",
+  "sha256": "034905675d57abd010f49bc09baec263a44b9a6048cb20aaed2548fe9f5c98b3"
+ },
+ "b032": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p3-99.txt",
+  "sha256": "18083d19a23350a8914867b08442819ca3ee0d1c982750bf54dcd9c0c81fb553"
+ },
+ "b033": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p4-1342.txt",
+  "sha256": "1387cb7bf97681620d238a7fbbda3e89ef1ef6d222fd503f58a45fd9044bd67a"
+ },
+ "b034": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p2-1342.txt",
+  "sha256": "2e3959ba01c8b5de31a38babe2cd9db0763771c38254def7fa6e4b954227e0b9"
+ },
+ "b035": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p5-99.txt",
+  "sha256": "21485ed4d624599791749f9f80921773d1cb9286e0705f655d9a54a91f1b3e32"
+ },
+ "b036": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/n1-2028.txt",
+  "sha256": "70b80eb43d10580dd27202b9d0612582bbab60e6fc3cec2b6af4e6ec21fc841f"
+ },
+ "b037": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p2-71.txt",
+  "sha256": "cadc0caf5e25d7aa66a9f2c4df1c09f0f7637523086dd9a19b89d25dcd430608"
+ },
+ "b038": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/n5-7.txt",
+  "sha256": "c9f13bb845fe21422ca6d667ed5fea284d7786e067cf3b44b21e0a0a80591737"
+ },
+ "b039": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p2-1342.txt",
+  "sha256": "03ae507f7ac28f412945cf87faa6552c1cc1bc6df5082bb3dc7242621a247c80"
+ },
+ "b040": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p1-2026.txt",
+  "sha256": "0a7819f71adc8d9a39e7d9ad77a50321d3a2ac49b8ffd8737dadf9c87167eccd"
+ },
+ "b041": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p5-2026.txt",
+  "sha256": "cdf38479e107586cad4adc80ab30c8a4ca4268c9239a138e699b1954e2e40425"
+ },
+ "b042": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/p1-99.txt",
+  "sha256": "7801e8d43544fb2ad448a47dae2e115f55207424d842cdd8da23d436213fafc2"
+ },
+ "b043": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p4-99.txt",
+  "sha256": "8dbda62338343827f84f173cb29c4d7dc540a5cb44cfc5e62b931e7b3072aa08"
+ },
+ "b044": {
+  "source": "klib-device",
+  "file": "final/samples/klib-final/n2-2028.txt",
+  "sha256": "7e54e60e386a011a88fd5a5025b235d0568aba6eea39f1535b5d3d93c0c30992"
+ },
+ "b045": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p2-99.txt",
+  "sha256": "20250a81f8f8d2410cb9a746e35b5455b45f21d746d5da67bc724b11df1f58fd"
+ },
+ "b046": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p5-1342.txt",
+  "sha256": "be45a94e175cd2072a55be41b168f3e30f51a4d1260478cbec8db78ee528953e"
+ },
+ "b047": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p4-71.txt",
+  "sha256": "83d93f6295b9090117ecd5df3c5e28ea8ce50f201dd99d51d6ce5b82eb0092b2"
+ },
+ "b048": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p2-2026.txt",
+  "sha256": "26635a822276e26476ca146af896a914f28e4bef5a3ef1aa1e58d6ddf0e608b1"
+ },
+ "b049": {
+  "source": "pp-host",
+  "file": "host/pp/samples-03/p3-2026.txt",
+  "sha256": "17dba6c9c102d7a0d206ab92b8de6c6ecfea349c053025af23f703fa28578561"
+ }
+}
